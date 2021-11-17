@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1>Book detail</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %><br><%= @user.name </td>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+            <td><a class="btn btn-success" href="/books/:id/edit">Edit</a></td>
+            <td><a class="btn btn-success" rel="nofollow" data-method="delete" href="/books/:id">Destroy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
