@@ -1,35 +1,19 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2>User info</h2>
-      <table class="table">
-       <tbody>
-         <tr><%= attachment_image_tag @user, :profile_image, :fill, 60 ,60, format: 'jpg', fallback: "no_image.jpg" %></tr>
-         <tr>
-           <th>name</th>
-           <th><%= @user.name %></th>
-         </tr>
-         <tr>
-           <th>introduction</th>
-           <th><%= @user.introduction %></th>
-         </tr>
-         <tr>
-           <th colspan="2"><% if @user.id == current_user.id %><%= link_to "編集", edit_user_path(current_user) %><% end %></th>
-         </tr>
-       </tbody>
-      </table>
-      
-      <h1>New Book</h1>
-      <%= form_with model:@book, local:true do |f| %>
-        <h5>Title</h5>
-        <%= f.text_field :title %>
-        <h5>Opinion</h5>
-        <%= f.text_area :body %><br>
-        <%= f.submit 'Create Book' %>
+    
+    <% if @book.errors.any? %>
+      <%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:
+        <ul><% @book.errors.full_messages.each do |message| %>
+        <li><%= message %>
+        <% end %></li>
+        </ul>
       <% end %>
+      
+  <div class="row">
+      
+    <div class="col-lg-4">
+    <%= render 'users/user-info', user: @user %>
+    <%= render 'books/user-info', book: @book %>
     </div>
-  </div>
-</div>
 
     <div class="col-lg-8">
       <h1>Books</h1>
@@ -42,13 +26,16 @@
             </tr>
           </thead>
           <tbody>
-          <%= @books.each do |book| %>
+          <% @books.each do |book| %>
             <tr>
-              <td><%= attachment_image_tag @user, :profile_image %></td>
-              <td><%= book.title %></td>
+              <td><%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size: "40x40" %></td>
+              <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
               <td><%= book.body %></td>
             </tr>
           <% end %>
           </tbody>
       </table>
-   </div>
+    </div>
+    </div>
+  </div>
+</div>
