@@ -5,12 +5,15 @@
       <h1>Editing Book</h1>
       
       <% if @book.errors.any? %>
-      <%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:
+       <div class="error-message">
+        <%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:
         <ul><% @book.errors.full_messages.each do |message| %>
         <li><%= message %>
         <% end %></li>
         </ul>
+       </div>
       <% end %>
+      
       
       <%= form_with model:@book, local:true do |f| %>
       

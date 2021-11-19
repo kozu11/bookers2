@@ -3,12 +3,16 @@
     <div class="mx-auto col-lg-6r">
      <h2>User info</h2>
      
+    
      <% if @user.errors.any? %>
-      <%= @user.errors.count %> error prohibited this obj from being saved:
+      <div class="error-message">
+       <%= @user.errors.count %> error prohibited this obj from being saved:
         <ul><% @user.errors.full_messages.each do |message| %>
         <li><%= message %>
         <% end %></li>
         </ul>
+      </div>
+       
           
       <% end %>
       
