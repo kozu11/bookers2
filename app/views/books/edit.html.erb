@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto col-lg-4">
+    <div class="mx-auto col-md-6 offset-md-3">
      
       <h1>Editing Book</h1>
       
@@ -21,7 +21,7 @@
         <%= f.text_field :title %>
         <h5>Opinion</h5>
         <%= f.text_field :body %><br>
-        <%= f.submit 'Update Book', class: "btn btn-success" %>
+        <%= f.submit "Update Book", class: "btn btn-success" %>
       <% end %>
       <%= link_to "Show", book_path(@book.id) %>  <!--bookのshowページへ-->
       <span>|</span>
