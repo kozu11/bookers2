@@ -1,31 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-lg-6r">
+      
      <h2>User info</h2>
      
-    
      <% if @user.errors.any? %>
       <div class="error-message">
-       <%= @user.errors.count %> error prohibited this obj from being saved:
+       <div class="error-message-bigger"><%= @user.errors.count %> error prohibited this obj from being saved:</div>
         <ul><% @user.errors.full_messages.each do |message| %>
         <li><%= message %>
         <% end %></li>
         </ul>
       </div>
-       
-          
-      <% end %>
+     <% end %>
       
-      <%= form_with model:@user, local:true do |f| %>
-      
-        <h5>Name</h5>
-        <%= f.text_field :name %>
-        <h5>Image</h5>
-        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-        <h5>Introduction</h5>
-        <%= f.text_field :introduction %><br>
-        <%= f.submit 'Update User', class: "btn btn-secondary" %>
-      <% end %>
+     <%= form_with model:@user, local:true do |f| %>
+       <h5>Name</h5>
+       <%= f.text_field :name %>
+       <h5>Image</h5>
+       <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+       <h5>Introduction</h5>
+       <%= f.text_field :introduction %><br>
+       <%= f.submit 'Update User', class: "btn btn-secondary" %>
+     <% end %>
       
     </div>
   </div>
