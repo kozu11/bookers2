@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy]
   resources :users, only: [:create, :index, :show, :edit, :update, :destroy]
-  resources :groups, only: [:new, :create, :index, :show, :edit, :update]
+  resources :groups, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    #グループ参加のルーティング
+    get :join
+  end
+  
 end
