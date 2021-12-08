@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     #グループ参加のルーティング
     get :join
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
   
 end
