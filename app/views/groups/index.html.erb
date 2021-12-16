@@ -18,7 +18,7 @@
         <% @groups.each do |group| %>
         <tbody>
           <td><%= attachment_image_tag group, :image, fallback: "no_image.jpg", size: "30x30" %></td>
-          <td><%= link_to group_path(group) do %><%= group.name %><% end %></td>
+          <td><%= link_to group.name, group_path(group) %></td>
           <td><%= group.introduction %></td>
           <td><%= group.users.count %></td>
           <!--#ログイン中のuserがオーナーだった場合のみ表示-->
